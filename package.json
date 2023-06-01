@@ -10,6 +10,7 @@
     "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "lint:fix": "eslint --fix",
     "prettier:checkNotUsing": "yarn prettier --write .",
+    "prettier:fix": "prettier --write .",
     "lint-prettier": "yarn lint:check && yarn prettier:check"
   },
   "author": "",

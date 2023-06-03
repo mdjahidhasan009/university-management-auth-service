@@ -10,8 +10,12 @@
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
 
   "rules": {
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    "no-unused-vars": "error",
+//    "no-console": "error",////NOTE: Need console for database connection, server started information
+//    "no-undef": "error",
+//    "no-unused-expressions": "error",////NOTE: giving error at index.ts process is not defined
+    "no-unreachable": "error"
+//    "consistent-type-definitions": ["error", "type"]////NOTE: Giving error at import
   },
 
   "env": {

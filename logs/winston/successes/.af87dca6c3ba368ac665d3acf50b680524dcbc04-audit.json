@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/successes/.af87dca6c3ba368ac665d3acf50b680524dcbc04-audit.json",
+    "files": [
+        {
+            "date": 1685863671117,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/successes/phu-2023-06-04-13-success.log",
+            "hash": "bb3699f88a20825aa38f60ea1dff1f787275c0963b0c3728e576243aa10c41f3"
+        }
+    ],
+    "hashType": "sha256"
+}

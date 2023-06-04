@@ -1,0 +1,38 @@
+Sun Jun 04 2023 12:58:43 GMT+0600 (Bangladesh Standard Time) 12:58:43 [info] info: Database is connected successfully
+Sun Jun 04 2023 12:58:43 GMT+0600 (Bangladesh Standard Time) 12:58:43 [info] info: Server is running on port = 
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-04T07:00:32.660Z'
+}
+{
+  level: 'info',
+  message: 'Server is running on port = ',
+  label: 'info',
+  timestamp: '2023-06-04T07:00:32.682Z'
+}
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-04T07:09:39.766Z'
+}
+{
+  level: 'info',
+  message: 'Server is running on port = ',
+  label: 'info',
+  timestamp: '2023-06-04T07:09:39.775Z'
+}
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-04T07:12:44.808Z'
+}
+{
+  level: 'info',
+  message: 'Server is running on port = ',
+  label: 'info',
+  timestamp: '2023-06-04T07:12:44.818Z'
+}

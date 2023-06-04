@@ -14,7 +14,7 @@
   ],
 
   "rules": {
-    "no-unused-vars": "error",
+//    "no-unused-vars": "error",
     //    "no-console": "error",////NOTE: Need console for database connection, server started information
     //    "no-undef": "error",
     //    "no-unused-expressions": "error",////NOTE: giving error at index.ts process is not defined

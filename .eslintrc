@@ -14,16 +14,22 @@
   ],
 
   "rules": {
-//    "no-unused-vars": "error",
-    //    "no-console": "error",////NOTE: Need console for database connection, server started information
-    //    "no-undef": "error",
-    //    "no-unused-expressions": "error",////NOTE: giving error at index.ts process is not defined
-    "no-unreachable": "error"
+    "no-console": ["error", { "allow": ["info"] }],
+    "no-unused-vars": "error",
+    "prefer-const": "error",
+    "no-undef": "error",
+    "no-unused-expressions": "error",
+    "no-unreachable": "error",
     //    "consistent-type-definitions": ["error", "type"]////NOTE: Giving error at import
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"]
   },
 
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
+  },
+  "globals": {
+    "process": "readonly"
   }
 }

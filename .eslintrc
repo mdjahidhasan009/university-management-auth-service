@@ -7,15 +7,29 @@
   },
   "plugins": ["@typescript-eslint"],
   // HERE
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
 
   "rules": {
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    "no-console": ["error", { "allow": ["info"] }],
+    "no-unused-vars": "error",
+    "prefer-const": "error",
+    "no-undef": "error",
+    "no-unused-expressions": "error",
+    "no-unreachable": "error",
+    //    "consistent-type-definitions": ["error", "type"]////NOTE: Giving error at import
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"]
   },
 
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
+  },
+  "globals": {
+    "process": "readonly"
   }
 }

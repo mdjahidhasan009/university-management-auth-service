@@ -1,8 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
-import { UserRoutes } from './app/modules/user/user.route';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
-import { SemesterRoutes } from './app/modules/academicSemester/academicSemester.route';
+import router from './app/routes';
 
 const app: Application = express();
 app.use(cors());
@@ -14,8 +13,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/v1/users/', UserRoutes);
-app.use('/api/v1/academic-semester/', SemesterRoutes);
+// app.use('/api/v1/users/', UserRoutes);
+// app.use('/api/v1/academic-semester/', SemesterRoutes);
+app.use('/api/v1', router);
 
 // app.get('/', async(req, res, next) => {
 //   // throw new ApiError(400,'error') // will be picked by if(err instanceof Error) {

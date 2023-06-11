@@ -1,13 +1,17 @@
+import { Schema, model } from 'mongoose';
+import httpStatus from 'http-status';
+
 import {
   AcademicSemesterModel,
   IAcademicSemester,
 } from './academicSemester.interface';
 
-import { Schema, model } from 'mongoose';
 import {
+  academicSemesterCodes,
   academicSemesterMonths,
   academicSemesterTitles,
 } from './academicSemester.constant';
+import ApiError from '../../../erros/ApiError';
 
 const academicSemesterSchema = new Schema<IAcademicSemester>({
   title: {
@@ -22,7 +26,7 @@ const academicSemesterSchema = new Schema<IAcademicSemester>({
   code: {
     type: String,
     required: true,
-    enum: ['01', '02', '03'],
+    enum: academicSemesterCodes,
   },
   startMonth: {
     type: String,
@@ -34,6 +38,20 @@ const academicSemesterSchema = new Schema<IAcademicSemester>({
     required: true,
     enum: academicSemesterMonths,
   },
+});
+
+academicSemesterSchema.pre('save', async function (next) {
+  const isExits = await AcademicSemester.findOne({
+    title: this.title,
+    year: this.year,
+  });
+  if (isExits) {
+    throw new ApiError(
+      httpStatus.CONFLICT,
+      'Academic semester is already exits'
+    );
+  }
+  next();
 });
 
 export const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(

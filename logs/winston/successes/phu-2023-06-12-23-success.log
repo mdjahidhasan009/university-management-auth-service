@@ -1,0 +1,24 @@
+{
+  message: 'SIGTERM is received',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-12T17:00:36.505Z'
+}
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-12T17:22:27.255Z'
+}
+{
+  level: 'info',
+  message: 'Server is running on port = ',
+  label: 'info',
+  timestamp: '2023-06-12T17:22:27.274Z'
+}
+{
+  message: 'SIGTERM is received',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-12T17:23:20.146Z'
+}

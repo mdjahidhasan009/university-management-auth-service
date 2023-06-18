@@ -24,7 +24,6 @@ const boostrap = async () => {
   }
 
   process.on('unhandledRejection', error => {
-    console.info('unhandled recection');
     if (server) {
       server.close(() => {
         errorLogger.error(error);
@@ -36,11 +35,11 @@ const boostrap = async () => {
   });
 };
 
-process.on('SIGTERM', () => {
-  logger.info('SIGTERM is received');
-  // if (server) {
-  //   server.close()
-  // }
-});
+// process.on('SIGTERM', () => {
+//   logger.info('SIGTERM is received');
+//   // if (server) {
+//   //   server.close()
+//   // }
+// });
 
 boostrap();

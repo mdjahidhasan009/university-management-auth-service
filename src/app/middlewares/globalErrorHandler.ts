@@ -9,7 +9,7 @@ import handleZodError from '../../erros/handleZodError';
 import handleCastError from '../../erros/handleCastError';
 
 const globalErrorHandler: ErrorRequestHandler = (
-  error: any,
+  error,
   req: Request,
   res: Response,
   next: NextFunction

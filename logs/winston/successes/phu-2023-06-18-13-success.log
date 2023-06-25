@@ -2,191 +2,143 @@
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:15:03.840Z'
+  timestamp: '2023-06-18T07:01:45.910Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:15:03.850Z'
+  timestamp: '2023-06-18T07:01:45.922Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:18:37.875Z'
+  timestamp: '2023-06-18T07:02:41.195Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:18:37.893Z'
+  timestamp: '2023-06-18T07:02:41.217Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:22:05.332Z'
+  timestamp: '2023-06-18T07:05:06.028Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:22:05.346Z'
+  timestamp: '2023-06-18T07:05:06.053Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:23:49.747Z'
+  timestamp: '2023-06-18T07:05:32.291Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:23:49.766Z'
+  timestamp: '2023-06-18T07:05:32.306Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:24:27.483Z'
+  timestamp: '2023-06-18T07:05:59.321Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:24:27.493Z'
+  timestamp: '2023-06-18T07:05:59.333Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:24:41.007Z'
+  timestamp: '2023-06-18T07:07:23.131Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:24:41.020Z'
+  timestamp: '2023-06-18T07:07:23.143Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:35:34.265Z'
+  timestamp: '2023-06-18T07:07:42.044Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:35:34.273Z'
+  timestamp: '2023-06-18T07:07:42.057Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:36:58.340Z'
+  timestamp: '2023-06-18T07:08:05.221Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:36:58.358Z'
+  timestamp: '2023-06-18T07:08:05.231Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:37:34.416Z'
+  timestamp: '2023-06-18T07:08:12.148Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:37:34.435Z'
+  timestamp: '2023-06-18T07:08:12.159Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:38:08.256Z'
+  timestamp: '2023-06-18T07:08:23.112Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:38:08.274Z'
+  timestamp: '2023-06-18T07:08:23.126Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:38:38.650Z'
+  timestamp: '2023-06-18T07:09:14.337Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:38:38.664Z'
+  timestamp: '2023-06-18T07:09:14.347Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-04T09:39:51.568Z'
+  timestamp: '2023-06-18T07:09:30.527Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-04T09:39:51.576Z'
-}
-{
-  message: 'Database is connected successfully',
-  level: 'info',
-  label: 'info',
-  timestamp: '2023-06-04T09:44:48.783Z'
-}
-{
-  level: 'info',
-  message: 'Server is running on port = ',
-  label: 'info',
-  timestamp: '2023-06-04T09:44:48.793Z'
-}
-{
-  message: 'Database is connected successfully',
-  level: 'info',
-  label: 'info',
-  timestamp: '2023-06-04T09:44:59.358Z'
-}
-{
-  level: 'info',
-  message: 'Server is running on port = ',
-  label: 'info',
-  timestamp: '2023-06-04T09:44:59.367Z'
-}
-{
-  message: 'Database is connected successfully',
-  level: 'info',
-  label: 'info',
-  timestamp: '2023-06-04T09:46:03.451Z'
-}
-{
-  level: 'info',
-  message: 'Server is running on port = ',
-  label: 'info',
-  timestamp: '2023-06-04T09:46:03.470Z'
-}
-{
-  message: 'Database is connected successfully',
-  level: 'info',
-  label: 'info',
-  timestamp: '2023-06-04T09:52:14.056Z'
-}
-{
-  level: 'info',
-  message: 'Server is running on port = ',
-  label: 'info',
-  timestamp: '2023-06-04T09:52:14.073Z'
+  timestamp: '2023-06-18T07:09:30.540Z'
 }

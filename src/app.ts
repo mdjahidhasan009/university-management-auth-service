@@ -1,12 +1,14 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import httpStatus from 'http-status';
+import cookieParser from 'cookie-parser';
 
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import router from './app/routes';
 
 const app: Application = express();
 app.use(cors());
+app.use(cookieParser());
 
 //console.log(app.get('env')) //env type development or production, default is development
 //console.log(process.env) //to see all enviroment variable

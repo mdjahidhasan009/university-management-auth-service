@@ -298,3 +298,15 @@
   label: 'info',
   timestamp: '2023-06-25T19:53:40.814Z'
 }
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-25T19:54:01.860Z'
+}
+{
+  level: 'info',
+  message: 'Server is running on port = ',
+  label: 'info',
+  timestamp: '2023-06-25T19:54:01.875Z'
+}

@@ -6,26 +6,6 @@
     "auditLog": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/.0129d2fac0418eccd47b9abf8e44222debe9fc6c-audit.json",
     "files": [
         {
-            "date": 1686588728415,
-            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-12-22-error.log",
-            "hash": "6da37ded8f0592384ccca1cfedd39a334bf949c8f5ba2e20ee73099ecc565ef5"
-        },
-        {
-            "date": 1686590542416,
-            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-12-23-error.log",
-            "hash": "2a3fa118f864a3f9dd86edc40a8a921f9f58f73219f37c66b27424ae65b96b8e"
-        },
-        {
-            "date": 1686596593954,
-            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-13-01-error.log",
-            "hash": "eaf93710ca48f2a78bdc4ce65dbacc87582bc7470b4a57d37a82b7829ff1a925"
-        },
-        {
-            "date": 1686677949923,
-            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-13-23-error.log",
-            "hash": "76a64bd5462d8594d11f33210feab863ae92a5114e7a4a815074d5f7d44de77c"
-        },
-        {
             "date": 1686835880674,
             "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-15-19-error.log",
             "hash": "f655c867acce1d3ddcf0846dfe3447b715f7672cda8b4cde2ef1c4370f64fb06"
@@ -124,6 +104,96 @@
             "date": 1687721049744,
             "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-26-01-error.log",
             "hash": "b48a6cac465c95bba3e0e781c7390b7be0b17f98aabc67b3a9a6707e5da177d7"
+        },
+        {
+            "date": 1687796678101,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-26-22-error.log",
+            "hash": "8a51ec909e3102e0116914783fd5e0e475f51a631d31f7768e3ee10a1798c3cc"
+        },
+        {
+            "date": 1687801047075,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-26-23-error.log",
+            "hash": "419a536af1d5013e542fc36ea237130d0abaea8abbbce6ed4893ceffebe08b1a"
+        },
+        {
+            "date": 1687844770213,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-11-error.log",
+            "hash": "3227af5052b89ce72732f60933e2912e7b25f52aa4f58f36bb3c966f6e5958a5"
+        },
+        {
+            "date": 1687846257529,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-12-error.log",
+            "hash": "04ed8b1231428418b9830700a9eafc34e915b491cb08a44b44b708e83dec016c"
+        },
+        {
+            "date": 1687856072719,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-14-error.log",
+            "hash": "0623fc4bb42e9938a042db45cafeced5b7ab6ec98adbdfd1ad95dfcd38432708"
+        },
+        {
+            "date": 1687856609242,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-15-error.log",
+            "hash": "c6a9058c0d4f05224f56f1fa005f0e13c1ef0806ecae91a336f43321473de28f"
+        },
+        {
+            "date": 1687860319012,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-16-error.log",
+            "hash": "9a8fecbb06589601132903bad36dbd33fc3c4817c2339efc69e86598acd0f5b9"
+        },
+        {
+            "date": 1687865143625,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-17-error.log",
+            "hash": "3d512d173f5b5c7ea885768fad117fffd0b518611b3e25dee91da0ee1cdfbb26"
+        },
+        {
+            "date": 1687868115454,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-18-error.log",
+            "hash": "5ef0366f732bcf6b47e1a297c83724916436253ff4fd4eabe9db9fcf588eac19"
+        },
+        {
+            "date": 1687873072196,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-19-error.log",
+            "hash": "9ef1f6333d18538eeddb2a645d740ebebd0a15f298ea702f531486f5ed013911"
+        },
+        {
+            "date": 1687874420606,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-20-error.log",
+            "hash": "815f489582fb107d3a6e65eab2aa86c0706fabfdc5e4412f8cd3d1b49a3a6b90"
+        },
+        {
+            "date": 1687884560734,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-22-error.log",
+            "hash": "423c05585f8826381089addd367de6a8c07af785f773b9b2c4363e158ae14f45"
+        },
+        {
+            "date": 1687887417772,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-27-23-error.log",
+            "hash": "03991010d8b6c8ecae357684730c8e704f960775786653811ea51a2740801e67"
+        },
+        {
+            "date": 1687888822386,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-28-00-error.log",
+            "hash": "9ce5cd3ea04086966e634522e6693d0edfbee680ee73751948bd84c39a18916c"
+        },
+        {
+            "date": 1687934733030,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-28-12-error.log",
+            "hash": "086c2e5ef8b44aaca57ae49d9c1a411aaf925f63b88f160800e936d545efd306"
+        },
+        {
+            "date": 1687938119015,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-28-13-error.log",
+            "hash": "a1e30518b1ab938058ea928f561ebb99e18633f354b35531c1805b860ed56898"
+        },
+        {
+            "date": 1687939247945,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-28-14-error.log",
+            "hash": "b06b73f5fcb4e9c21fca90391f5cd7b39dbe0d69fb5d249dae2412929267d2f9"
+        },
+        {
+            "date": 1687943962099,
+            "name": "/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/logs/winston/errors/phu-2023-06-28-15-error.log",
+            "hash": "aba42eaafe173c8ec0b8fbc2c325be2eef2d78ebe4848129d506f31cf2f1aae4"
         }
     ],
     "hashType": "sha256"

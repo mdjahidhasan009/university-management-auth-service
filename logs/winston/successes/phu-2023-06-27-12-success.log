@@ -1,0 +1,24 @@
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-27T06:15:19.826Z'
+}
+{
+  level: 'info',
+  message: 'Server is running on port = ',
+  label: 'info',
+  timestamp: '2023-06-27T06:15:19.840Z'
+}
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'info',
+  timestamp: '2023-06-27T06:19:49.356Z'
+}
+{
+  level: 'info',
+  message: 'Server is running on port = ',
+  label: 'info',
+  timestamp: '2023-06-27T06:19:49.367Z'
+}

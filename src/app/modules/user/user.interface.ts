@@ -9,6 +9,7 @@ export type IUser = {
   role: string;
   password: string;
   needsPasswordChange: true | false;
+  passwordChangedAt?: Date;
   student?: Types.ObjectId | IStudent;
   faculty?: Types.ObjectId | IFaculty;
   admin?: Types.ObjectId | IAdmin;
@@ -25,7 +26,7 @@ export type IUser = {
 
 //For using static methods
 export type UserModel = {
-  isUserExist(
+  isUserExists(
     id: string
   ): Promise<Pick<IUser, 'id' | 'password' | 'role' | 'needsPasswordChange'>>;
 

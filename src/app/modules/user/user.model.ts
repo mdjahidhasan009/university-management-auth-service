@@ -25,6 +25,9 @@ const userSchema = new Schema<IUser, UserModel>( //For static methods
       type: Boolean,
       default: true,
     },
+    passwordChangedAt: {
+      type: Date,
+    },
     student: {
       type: Schema.Types.ObjectId,
       ref: 'Student',
@@ -47,7 +50,7 @@ const userSchema = new Schema<IUser, UserModel>( //For static methods
 );
 
 //Static methods
-userSchema.statics.isUserExits = async function (
+userSchema.statics.isUserExists = async function (
   id: string
 ): Promise<Pick<
   IUser,
@@ -60,7 +63,7 @@ userSchema.statics.isUserExits = async function (
   return user;
 };
 
-userSchema.statics.isPasswordMatch = async function (
+userSchema.statics.isPasswordMatched = async function (
   givenPassword: string,
   savedPassword: string
 ): Promise<boolean> {
@@ -80,12 +83,20 @@ userSchema.statics.isPasswordMatch = async function (
 //     return isPasswordMatch;
 // }
 
+//will run for user.create or user.save
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   this.password = await bcrypt.hash(
     this.password,
     Number(config.bycrypt_salt_round)
   );
+
+  /*
+  //For password change using pre save hook=> see authf.service.ts
+  if(!this.needsPasswordChange) {
+      this.passwordChangedAt = new Date();
+  }
+  */
   next();
 });
 

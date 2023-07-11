@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
@@ -31,7 +32,6 @@
     "src/**/*.ts": "yarn lint-prettier"
   },
   "dependencies": {
-    "@types/bcrypt": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
     "bcrypt": "^5.1.0",

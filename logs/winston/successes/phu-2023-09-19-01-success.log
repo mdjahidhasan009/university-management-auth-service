@@ -2,35 +2,35 @@
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-28T08:00:51.312Z'
+  timestamp: '2023-09-18T19:14:23.100Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-28T08:00:51.321Z'
+  timestamp: '2023-09-18T19:14:23.141Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-28T08:01:49.213Z'
+  timestamp: '2023-09-18T19:15:44.587Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-28T08:01:49.232Z'
+  timestamp: '2023-09-18T19:15:44.608Z'
 }
 {
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-06-28T08:02:04.993Z'
+  timestamp: '2023-09-18T19:16:28.883Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-06-28T08:02:05.007Z'
+  timestamp: '2023-09-18T19:16:28.900Z'
 }

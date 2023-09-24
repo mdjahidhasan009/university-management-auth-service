@@ -36,7 +36,6 @@ export const generateStudentId = async (
   incrementedId = `${academicSemester.year.substring(2)}${
     academicSemester.code
   }${incrementedId}`;
-  console.info(incrementedId);
   return incrementedId;
 };
 

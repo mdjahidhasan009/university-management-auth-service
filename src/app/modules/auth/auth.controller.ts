@@ -9,7 +9,8 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
   const { ...loginData } = req.body;
 
   const result = await AuthService.loginUser(loginData);
-  const { refreshToken, ...others } = result;
+  // const { refreshToken, ...others } = result;
+  const { refreshToken } = result;
 
   const cookieOptions = {
     secure: config.env === 'production' ? true : false,
@@ -20,7 +21,8 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
   sendResponse<ILoginUserResponse>(res, {
     statusCode: 200,
     message: 'Login successful',
-    data: others,
+    // data: others,
+    data: result,
     success: true,
   });
 });
@@ -29,13 +31,12 @@ const changePassword = catchAsync(async (req: Request, res: Response) => {
   const user = req.user;
   const { ...passwordData } = req.body;
 
-  const result = await AuthService.changePassword(user, passwordData);
+  await AuthService.changePassword(user, passwordData);
 
-  sendResponse<ILoginUserResponse>(res, {
+  sendResponse(res, {
     statusCode: 200,
-    message: 'Password changed successfully',
-    data: result,
     success: true,
+    message: 'Password changed successfully !',
   });
 });
 

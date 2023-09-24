@@ -2,10 +2,14 @@ import { IStudent, IStudentFilters } from './student.interface';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import { IGenericResponse } from '../../../interfaces/common';
 import { paginationHelpers } from '../../../helpers/paginationHelpers';
-import { studentFilterableFields } from './student.constant';
+import {
+  EVENT_STUDENT_UPDATED,
+  studentFilterableFields,
+} from './student.constant';
 import { SortOrder } from 'mongoose';
 import { Student } from './student.model';
-import ApiError from '../../../erros/ApiError';
+import ApiError from '../../../errors/ApiError';
+import { RedisClient } from '../../../shared/redis';
 
 const getAllStudents = async (
   filters: IStudentFilters,
@@ -119,8 +123,11 @@ const updateStudent = async (
   })
     .populate('academicSemester')
     .populate('academicDepartment')
-    .populate('academicFaculty')
-    .lean();
+    .populate('academicFaculty');
+
+  if (result) {
+    await RedisClient.publish(EVENT_STUDENT_UPDATED, JSON.stringify(result));
+  }
   return result;
 };
 

@@ -11,7 +11,7 @@ import {
   academicSemesterMonths,
   academicSemesterTitles,
 } from './academicSemester.constant';
-import ApiError from '../../../erros/ApiError';
+import ApiError from '../../../errors/ApiError';
 
 const academicSemesterSchema = new Schema<IAcademicSemester>(
   {
@@ -21,7 +21,7 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
       enum: academicSemesterTitles,
     },
     year: {
-      type: String,
+      type: Number,
       required: true,
     },
     code: {
@@ -38,6 +38,10 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
       type: String,
       required: true,
       enum: academicSemesterMonths,
+    },
+    syncId: {
+      type: String,
+      required: true,
     },
   },
   {

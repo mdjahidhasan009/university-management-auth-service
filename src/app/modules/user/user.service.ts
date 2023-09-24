@@ -8,7 +8,7 @@ import {
 } from './user.utils';
 import { IStudent } from '../student/student.interface';
 import { AcademicSemester } from '../academicSemester/acemedicSemester.model';
-import ApiError from '../../../erros/ApiError';
+import ApiError from '../../../errors/ApiError';
 import mongoose from 'mongoose';
 import { Student } from '../student/student.model';
 import httpStatus from 'http-status';
@@ -16,6 +16,8 @@ import { IFaculty } from '../faculty/faculty.interface';
 import { Faculty } from '../faculty/faculty.model';
 import { IAdmin } from '../admin/admin.interface';
 import { Admin } from '../admin/admin.model';
+import { EVENT_FACULTY_CREATED, EVENT_STUDENT_CREATED } from './user.constant';
+import { RedisClient } from '../../../shared/redis';
 
 const createStudent = async (
   student: IStudent,
@@ -70,6 +72,13 @@ const createStudent = async (
         { path: 'academicFaculty' },
       ],
     });
+  }
+
+  if (newUserAllData) {
+    await RedisClient.publish(
+      EVENT_STUDENT_CREATED,
+      JSON.stringify(newUserAllData.student)
+    );
   }
 
   return newUserAllData;
@@ -133,7 +142,13 @@ const createFaculty = async (
     });
   }
 
-  return newUserAllData;
+  if (newUserAllData) {
+    await RedisClient.publish(
+      EVENT_FACULTY_CREATED,
+      JSON.stringify(newUserAllData.faculty)
+    );
+    return newUserAllData;
+  }
 };
 
 const createAdmin = async (

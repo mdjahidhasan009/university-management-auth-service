@@ -7,7 +7,7 @@ import {
   IRefreshTokenResponse,
 } from './auth.interface';
 import { User } from '../user/user.model';
-import ApiError from '../../../erros/ApiError';
+import ApiError from '../../../errors/ApiError';
 import config from '../../../config';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import bcrypt from 'bcrypt';
@@ -68,7 +68,7 @@ const changePassword = async (
 
   const newHashedPassword = await bcrypt.hash(
     newPassword,
-    Number(config.bycrypt_salt_round)
+    Number(config.bycrypt_salt_rounds)
   );
   const query = { id: user?.userId };
   const updatedData = {

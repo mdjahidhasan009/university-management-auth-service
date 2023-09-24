@@ -1,0 +1,10 @@
+{
+  level: 'error',
+  message: 'Failed to connect database initAcademicFacultyEvents is not defined',
+  stack: 'ReferenceError: initAcademicFacultyEvents is not defined\n' +
+    '    at subscribeToEvents (/media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/src/app/events/index.ts:7:3)\n' +
+    '    at /media/jahid/SSD Remaining/1.Projects/1.In Github as Single Project/WEB/jhankar mahbub/L2/university-management-auth-service/src/server.ts:19:24\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:95:5)',
+  label: 'error',
+  timestamp: '2023-09-23T16:56:38.536Z'
+}

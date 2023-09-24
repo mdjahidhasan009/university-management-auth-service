@@ -1,11 +1,11 @@
-import { IUser, UserModel } from './user.interface';
+import { IUser, IUserMethods, UserModel } from './user.interface';
 import { model, Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
 import config from '../../../config';
 
 // const userSchema = new Schema<IUser, {}, IUserMethods>( //For using instance methods
 // const userSchema = new Schema<IUser, Record<string, never>, IUserMethods>( //For using instance methods
-const userSchema = new Schema<IUser, UserModel>( //For static methods
+const UserSchema = new Schema<IUser, UserModel, IUserMethods>(
   {
     id: {
       type: String,
@@ -50,25 +50,31 @@ const userSchema = new Schema<IUser, UserModel>( //For static methods
 );
 
 //Static methods
-userSchema.statics.isUserExists = async function (
+// UserSchema.statics.isUserExist = async function (
+//   id: string
+// ): Promise<Pick<
+//   IUser,
+//   'id' | 'password' | 'role' | 'needsPasswordChange'
+// > | null> {
+//   return await User.findOne(
+//     { id },
+//     { id: 1, password: 1, role: 1, needsPasswordChange: 1 }
+//   );
+// };
+UserSchema.statics.isUserExist = async function (
   id: string
-): Promise<Pick<
-  IUser,
-  'id' | 'password' | 'needsPasswordChange' | 'role'
-> | null> {
-  const user = await User.findOne(
+): Promise<IUser | null> {
+  return await User.findOne(
     { id },
-    { id: 1, password: 1, needsPasswordChange: 1, role: 1 }
-  ).lean();
-  return user;
+    { id: 1, password: 1, role: 1, needsPasswordChange: 1 }
+  );
 };
 
-userSchema.statics.isPasswordMatched = async function (
+UserSchema.statics.isPasswordMatched = async function (
   givenPassword: string,
   savedPassword: string
 ): Promise<boolean> {
-  const isPasswordMatch = await bcrypt.compare(givenPassword, savedPassword);
-  return isPasswordMatch;
+  return await bcrypt.compare(givenPassword, savedPassword);
 };
 
 //Instance methods
@@ -84,20 +90,41 @@ userSchema.statics.isPasswordMatched = async function (
 // }
 
 //will run for user.create or user.save
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
-  this.password = await bcrypt.hash(
-    this.password,
-    Number(config.bycrypt_salt_round)
-  );
+// userSchema.pre('save', async function (next) {
+//   if (!this.isModified('password')) return next();
+//   this.password = await bcrypt.hash(
+//     this.password,
+//     Number(config.bycrypt_salt_rounds)
+//   );
+//
+//   /*
+//   //For password change using pre save hook=> see authf.service.ts
+//   if(!this.needsPasswordChange) {
+//       this.passwordChangedAt = new Date();
+//   }
+//   */
+//   user.password = '';
+//   next();
+// });
 
-  /*
-  //For password change using pre save hook=> see authf.service.ts
-  if(!this.needsPasswordChange) {
-      this.passwordChangedAt = new Date();
+// UserSchema.methods.changedPasswordAfterJwtIssued = function (
+//   jwtTimestamp: number
+// ) {
+//   console.log({ jwtTimestamp }, 'hi');
+// };
+
+UserSchema.pre('save', async function (next) {
+  // hashing user password
+  // eslint-disable-next-line @typescript-eslint/no-this-alias
+  const user = this;
+  user.password = await bcrypt.hash(
+    user.password,
+    Number(config.bycrypt_salt_rounds)
+  );
+  if (!user.needsPasswordChange) {
+    user.passwordChangedAt = new Date();
   }
-  */
   next();
 });
 
-export const User = model<IUser, UserModel>('User', userSchema);
+export const User = model<IUser, UserModel>('User', UserSchema);

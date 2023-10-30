@@ -17,12 +17,14 @@ export type IUser = {
 
 //For using instance methods
 // export interface IUserMethods {
-//   isUserExits: (id: string) => Promise<Partial<IUser> | null>;
-//   isPasswordMatch: (
-//     currentPassword: string,
-//     savedPassword: string
-//   ) => Promise<boolean>;
-// }
+export type IUserMethods = {
+  ////TODO: es-lint needs type not interface have to study about this
+  isUserExits: (id: string) => Promise<Partial<IUser> | null>;
+  isPasswordMatch: (
+    currentPassword: string,
+    savedPassword: string
+  ) => Promise<boolean>;
+};
 
 //For using static methods
 export type UserModel = {

@@ -2,11 +2,11 @@
   message: 'Database is connected successfully',
   level: 'info',
   label: 'info',
-  timestamp: '2023-09-19T20:45:28.184Z'
+  timestamp: '2023-10-27T08:51:45.250Z'
 }
 {
   level: 'info',
   message: 'Server is running on port = ',
   label: 'info',
-  timestamp: '2023-09-19T20:45:28.200Z'
+  timestamp: '2023-10-27T08:51:45.274Z'
 }

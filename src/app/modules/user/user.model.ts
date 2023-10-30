@@ -61,7 +61,7 @@ const UserSchema = new Schema<IUser, UserModel, IUserMethods>(
 //     { id: 1, password: 1, role: 1, needsPasswordChange: 1 }
 //   );
 // };
-UserSchema.statics.isUserExist = async function (
+UserSchema.statics.isUserExists = async function (
   id: string
 ): Promise<IUser | null> {
   return await User.findOne(

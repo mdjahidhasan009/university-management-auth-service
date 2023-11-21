@@ -1,0 +1,17 @@
+version: '3'
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:4001"
+    depends_on:
+      - redis
+    environment:
+        - REDIS_URL=redis://redis:6379
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6380:6379"

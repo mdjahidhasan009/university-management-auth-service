@@ -28,7 +28,7 @@ export type IAcademicSemesterCodes = '01' | '02' | '03';
 
 export type AcademicSemesterModel = Model<IAcademicSemester>;
 export type IAcademicSemesterFilters = {
-  searchTerm: string;
+  searchTerm?: string;
 };
 
 export type IAcademicSemesterCreatedEvent = {

@@ -24,7 +24,7 @@ const createResetToken = (
 ////TODO: have to study
 //without async await in auth.ts file code below verifyToken not execute in src > app > middlewares > auth.ts
 // const verifyToken = async (token: string, secret: Secret): JwtPayload => {
-const verifyToken = (token: string, secret: Secret): JwtPayload => {
+const verifyToken = (token: string, secret: Secret): JwtPayload | undefined => {
   // return await jwt.verify(token, secret) as JwtPayload;
   try {
     return jwt.verify(token, secret) as JwtPayload;

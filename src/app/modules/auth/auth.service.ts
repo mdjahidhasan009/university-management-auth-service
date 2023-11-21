@@ -58,7 +58,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
 };
 
 const changePassword = async (
-  user: JwtPayload | null,
+  user: JwtPayload | null | undefined,
   payload: IChangePassword
 ): Promise<void> => {
   const { oldPassword, newPassword } = payload;
@@ -157,6 +157,8 @@ const refreshToken = async (
       refreshToken,
       config.jwt.refresh_secret as Secret
     );
+    ////TODO: have to refactor
+    if (!verifyRefreshToken) throw new ApiError(403, 'Invalid Refresh Token');
   } catch (e) {
     throw new ApiError(403, 'Invalid Refresh Token');
   }

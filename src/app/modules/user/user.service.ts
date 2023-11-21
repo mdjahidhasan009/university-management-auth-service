@@ -148,7 +148,7 @@ const createFaculty = async (
       JSON.stringify(newUserAllData.faculty)
     );
     return newUserAllData;
-  }
+  } else return null;
 };
 
 const createAdmin = async (

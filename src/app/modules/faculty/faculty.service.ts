@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-dgetAllFacultiesisable @typescript-eslint/no-explicit-any */
 import mongoose, { SortOrder } from 'mongoose';
-import { paginationHelpers } from '../../../helpers/paginationHelper';
+import { paginationHelpers } from '../../../helpers/paginationHelpers';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 

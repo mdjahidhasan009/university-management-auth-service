@@ -18,7 +18,7 @@ const getAllStudents = catchAsync(async (req: Request, res: Response) => {
     paginationOptions
   );
 
-  sendResponse<IStudent>(res, {
+  sendResponse<IStudent[]>(res, {
     statusCode: 200,
     success: true,
     message: 'Students fetched successfully',
@@ -35,8 +35,7 @@ const getSingleStudent = catchAsync(async (req: Request, res: Response) => {
     statusCode: 200,
     success: true,
     message: 'Student fetched successfully',
-    data: result.data,
-    meta: result.meta,
+    data: result,
   });
 });
 
@@ -50,7 +49,7 @@ const updateStudent = catchAsync(async (req: Request, res: Response) => {
     statusCode: 200,
     success: true,
     message: 'Student updated successfully',
-    data: result.data,
+    data: result,
   });
 });
 
@@ -63,7 +62,7 @@ const deleteStudent = catchAsync(async (req: Request, res: Response) => {
     statusCode: 200,
     success: true,
     message: 'Student deleted successfully',
-    data: result.data,
+    data: result,
   });
 });
 

@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
     "start": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
@@ -14,6 +16,11 @@
     "prettier:fix": "prettier --write .",
     "lint-prettier": "yarn lint:check && yarn prettier:check"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -49,6 +56,9 @@
     "redis": "^4.6.8",
     "winston": "^3.9.0",
     "winston-daily-rotate-file": "^4.7.1",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "ts-node": "^10.9.1",
+    "rimraf": "^5.0.5",
+    "pre-commit": "^1.2.2"
   }
 }

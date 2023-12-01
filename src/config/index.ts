@@ -24,4 +24,5 @@ export default {
   resetlink: process.env.REST_PASS_UI_LINK,
   email: process.env.EMAIL,
   appPass: process.env.APP_PASS,
+  cors: process.env.CORS,
 };

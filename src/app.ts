@@ -7,7 +7,21 @@ import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import router from './app/routes';
 
 const app: Application = express();
-app.use(cors({ credentials: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (
+        (process.env.CORS && process.env.CORS.includes(<string>origin)) ||
+        !origin
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
 //console.log(app.get('env')) //env type development or production, default is development

@@ -41,6 +41,16 @@ const createSemester = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
         data: result,
     });
 }));
+const getSingleSemester = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const result = yield academicSemester_service_1.AcademicSemesterService.getSingleSemester(id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Semester retrieved successfully',
+        data: result,
+    });
+}));
 const getAllSemesters = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const paginationOptions = {
     //     page: Number(req.query.page) || 1,
@@ -57,16 +67,6 @@ const getAllSemesters = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
         message: 'Semester retrieved successfully',
         meta: result.meta,
         data: result.data,
-    });
-}));
-const getSingleSemester = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.id;
-    const result = yield academicSemester_service_1.AcademicSemesterService.getSingleSemester(id);
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: 'Semester retrieved successfully',
-        data: result,
     });
 }));
 const updateSemester = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

@@ -8,6 +8,18 @@ import { adminFilterableFields } from './admin.constant';
 import { IAdmin } from './admin.interface';
 import { AdminService } from './admin.service';
 
+const getSingleAdmin = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await AdminService.getSingleAdmin(id);
+
+  sendResponse<IAdmin>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Admin retrieved successfully !',
+    data: result,
+  });
+});
+
 const getAllAdmins = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, adminFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
@@ -20,18 +32,6 @@ const getAllAdmins = catchAsync(async (req: Request, res: Response) => {
     message: 'Admins retrieved successfully !',
     meta: result.meta,
     data: result.data,
-  });
-});
-
-const getSingleAdmin = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const result = await AdminService.getSingleAdmin(id);
-
-  sendResponse<IAdmin>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Admin retrieved successfully !',
-    data: result,
   });
 });
 

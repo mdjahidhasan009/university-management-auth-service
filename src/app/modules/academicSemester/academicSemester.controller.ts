@@ -24,6 +24,19 @@ const createSemester: RequestHandler = catchAsync(
   }
 );
 
+const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  const result = await AcademicSemesterService.getSingleSemester(id);
+
+  sendResponse<IAcademicSemester>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Semester retrieved successfully',
+    data: result,
+  });
+});
+
 const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
   // const paginationOptions = {
   //     page: Number(req.query.page) || 1,
@@ -45,19 +58,6 @@ const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
     message: 'Semester retrieved successfully',
     meta: result.meta,
     data: result.data,
-  });
-});
-
-const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
-
-  const result = await AcademicSemesterService.getSingleSemester(id);
-
-  sendResponse<IAcademicSemester>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Semester retrieved successfully',
-    data: result,
   });
 });
 

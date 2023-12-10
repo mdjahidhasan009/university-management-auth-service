@@ -8,7 +8,6 @@ const router = express.Router();
 
 router.get(
   '/:id',
-  // eslint-disable-next-line no-undef
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   AdminController.getSingleAdmin
 );

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SemesterRoutes = void 0;
+exports.AcademicSemesterRoutes = void 0;
 const express_1 = __importDefault(require("express"));
 const academicSemester_validation_1 = require("./academicSemester.validation");
 const validateRequest_1 = __importDefault(require("../../middlewares/validateRequest"));
@@ -23,4 +23,4 @@ router.get('/',
 academicSemester_controller_1.AcademicSemesterController.getAllSemesters);
 router.patch('/:id', (0, validateRequest_1.default)(academicSemester_validation_1.AcademicSemesterValidation.updateAcademicSemesterZodSchema), (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), academicSemester_controller_1.AcademicSemesterController.updateSemester);
 router.delete('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), academicSemester_controller_1.AcademicSemesterController.deleteSemester);
-exports.SemesterRoutes = router;
+exports.AcademicSemesterRoutes = router;

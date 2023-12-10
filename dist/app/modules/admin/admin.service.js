@@ -32,6 +32,10 @@ const paginationHelpers_1 = require("../../../helpers/paginationHelpers");
 const user_model_1 = require("../user/user.model");
 const admin_constant_1 = require("./admin.constant");
 const admin_model_1 = require("./admin.model");
+const getSingleAdmin = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield admin_model_1.Admin.findOne({ id }).populate('ManagementDepartment');
+    return result;
+});
 const getAllAdmins = (filters, paginationOptions) => __awaiter(void 0, void 0, void 0, function* () {
     const { searchTerm } = filters, filtersData = __rest(filters, ["searchTerm"]);
     const { page, limit, skip, sortBy, sortOrder } = paginationHelpers_1.paginationHelpers.calculatePagination(paginationOptions);
@@ -72,10 +76,6 @@ const getAllAdmins = (filters, paginationOptions) => __awaiter(void 0, void 0, v
         },
         data: result,
     };
-});
-const getSingleAdmin = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield admin_model_1.Admin.findOne({ id }).populate('ManagementDepartment');
-    return result;
 });
 const updateAdmin = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const isExist = yield admin_model_1.Admin.findOne({ id });

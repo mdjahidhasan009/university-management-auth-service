@@ -6,11 +6,7 @@ import auth from '../../middlewares/auth';
 import { ENUM_USER_ROLE } from '../../../enums/users';
 
 const router = express.Router();
-router.patch(
-  '/:id',
-  validateRequest(StudentValidation.updateStudentZodSchema),
-  StudentController.updateStudent
-);
+
 router.get(
   '/:id',
   auth(
@@ -28,6 +24,12 @@ router.delete(
   StudentController.deleteStudent
 );
 
+router.patch(
+  '/:id',
+  validateRequest(StudentValidation.updateStudentZodSchema),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  StudentController.updateStudent
+);
 router.get(
   '/',
   auth(

@@ -8,6 +8,18 @@ import { facultyFilterableFields } from './faculty.constant';
 import { IFaculty } from './faculty.interface';
 import { FacultyService } from './faculty.service';
 
+const getSingleFaculty = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await FacultyService.getSingleFaculty(id);
+
+  sendResponse<IFaculty>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'faculty retrieved successfully !',
+    data: result,
+  });
+});
+
 const getAllFaculties = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, facultyFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
@@ -23,18 +35,6 @@ const getAllFaculties = catchAsync(async (req: Request, res: Response) => {
     message: 'faculties retrieved successfully !',
     meta: result.meta,
     data: result.data,
-  });
-});
-
-const getSingleFaculty = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const result = await FacultyService.getSingleFaculty(id);
-
-  sendResponse<IFaculty>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'faculty retrieved successfully !',
-    data: result,
   });
 });
 

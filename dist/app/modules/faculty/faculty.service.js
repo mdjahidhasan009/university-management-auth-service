@@ -34,6 +34,12 @@ const user_model_1 = require("../user/user.model");
 const faculty_constant_1 = require("./faculty.constant");
 const faculty_model_1 = require("./faculty.model");
 const redis_1 = require("../../../shared/redis");
+const getSingleFaculty = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield faculty_model_1.Faculty.findOne({ id })
+        .populate('academicDepartment')
+        .populate('academicFaculty');
+    return result;
+});
 const getAllFaculties = (filters, paginationOptions) => __awaiter(void 0, void 0, void 0, function* () {
     const { searchTerm } = filters, filtersData = __rest(filters, ["searchTerm"]);
     const { page, limit, skip, sortBy, sortOrder } = paginationHelpers_1.paginationHelpers.calculatePagination(paginationOptions);
@@ -75,12 +81,6 @@ const getAllFaculties = (filters, paginationOptions) => __awaiter(void 0, void 0
         },
         data: result,
     };
-});
-const getSingleFaculty = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield faculty_model_1.Faculty.findOne({ id })
-        .populate('academicDepartment')
-        .populate('academicFaculty');
-    return result;
 });
 const updateFaculty = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const isExist = yield faculty_model_1.Faculty.findOne({ id });

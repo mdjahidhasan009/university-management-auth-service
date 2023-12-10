@@ -21,6 +21,18 @@ const createFaculty = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getSingleFaculty = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await AcademicFacultyService.getSingleFaculty(id);
+
+  sendResponse<IAcademicFaculty>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Academic faculty fetched successfully',
+    data: result,
+  });
+});
+
 const getAllFaculties = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, academicFacultyFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
@@ -36,18 +48,6 @@ const getAllFaculties = catchAsync(async (req: Request, res: Response) => {
     message: 'Academic Faculties retrieved successfully',
     meta: result.meta,
     data: result.data,
-  });
-});
-
-const getSingleFaculty = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await AcademicFacultyService.getSingleFaculty(id);
-
-  sendResponse<IAcademicFaculty>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Academic Faculty fetched successfully',
-    data: result,
   });
 });
 

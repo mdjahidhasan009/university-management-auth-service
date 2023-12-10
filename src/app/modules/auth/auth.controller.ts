@@ -27,6 +27,25 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const refreshToken = catchAsync(async (req: Request, res: Response) => {
+  const { refreshToken } = req.cookies;
+
+  const result = await AuthService.refreshToken(refreshToken);
+  const cookieOptions = {
+    secure: config.env === 'production' ? true : false,
+    httpOnly: true,
+  };
+
+  res.cookie('refreshToken', refreshToken, cookieOptions);
+
+  sendResponse<IRefreshTokenResponse>(res, {
+    statusCode: 200,
+    message: 'Refresh Token successful',
+    data: result,
+    success: true,
+  });
+});
+
 const changePassword = catchAsync(async (req: Request, res: Response) => {
   const user = req.user;
   const { ...passwordData } = req.body;
@@ -37,25 +56,6 @@ const changePassword = catchAsync(async (req: Request, res: Response) => {
     statusCode: 200,
     success: true,
     message: 'Password changed successfully !',
-  });
-});
-
-const refreshToken = catchAsync(async (req: Request, res: Response) => {
-  const { refreshToken } = req.cookies;
-
-  const result = await AuthService.refreshToken(refreshToken);
-  // const cookieOptions = {
-  //   secure: config.env === 'production' ? true : false,
-  //   httpOnly: true,
-  // };
-
-  // res.cookie('refreshToken', refreshToken, cookieOptions);
-
-  sendResponse<IRefreshTokenResponse>(res, {
-    statusCode: 200,
-    message: 'Refresh Token successful',
-    data: result,
-    success: true,
   });
 });
 

@@ -24,12 +24,9 @@ router.patch(
   validateRequest(
     AcademicDepartmentValidation.updateAcademicDepartmentZodSchema
   ),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   AcademicDepartmentController.updateDepartment
 );
-
-router.delete('/:id', AcademicDepartmentController.deleteDepartment);
-
-router.get('/', AcademicDepartmentController.getAllDepartments);
 
 router.delete(
   '/:id',

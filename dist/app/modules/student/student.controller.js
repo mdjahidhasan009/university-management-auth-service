@@ -18,6 +18,16 @@ const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
 const student_constant_1 = require("./student.constant");
 const student_service_1 = require("./student.service");
+const getSingleStudent = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const studentId = req.params.id;
+    const result = yield student_service_1.StudentService.getSingleStudent(studentId);
+    (0, sendResponse_1.default)(res, {
+        statusCode: 200,
+        success: true,
+        message: 'Student fetched successfully',
+        data: result,
+    });
+}));
 const getAllStudents = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filters = (0, pick_1.default)(req.query, student_constant_1.studentFilterableFields);
     const paginationOptions = (0, pick_1.default)(req.query, student_constant_1.studentSearchableFields);
@@ -28,16 +38,6 @@ const getAllStudents = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
         message: 'Students fetched successfully',
         data: result.data,
         meta: result.meta,
-    });
-}));
-const getSingleStudent = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const studentId = req.params.id;
-    const result = yield student_service_1.StudentService.getSingleStudent(studentId);
-    (0, sendResponse_1.default)(res, {
-        statusCode: 200,
-        success: true,
-        message: 'Student fetched successfully',
-        data: result,
     });
 }));
 const updateStudent = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

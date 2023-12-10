@@ -26,12 +26,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.StudentService = void 0;
 const paginationHelpers_1 = require("../../../helpers/paginationHelpers");
 const student_constant_1 = require("./student.constant");
+const mongoose_1 = __importDefault(require("mongoose"));
 const student_model_1 = require("./student.model");
 const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
 const redis_1 = require("../../../shared/redis");
+const user_model_1 = require("../user/user.model");
 const getAllStudents = (filters, paginationOptions) => __awaiter(void 0, void 0, void 0, function* () {
     const { searchTerm } = filters, filtersData = __rest(filters, ["searchTerm"]);
-    const { page, limit, skip } = paginationHelpers_1.paginationHelpers.calculatePagination(paginationOptions);
+    const { page, limit, skip, sortBy, sortOrder } = paginationHelpers_1.paginationHelpers.calculatePagination(paginationOptions);
     const andConditions = [];
     if (searchTerm) {
         andConditions.push({
@@ -45,12 +47,15 @@ const getAllStudents = (filters, paginationOptions) => __awaiter(void 0, void 0,
     }
     if (Object.keys(filtersData).length) {
         andConditions.push({
-            $and: Object.keys(filtersData).map(([key, value]) => ({
-                [key]: value,
+            $and: Object.entries(filtersData).map(([field, value]) => ({
+                [field]: value,
             })),
         });
     }
     const sortConditions = {};
+    if (sortBy && sortOrder) {
+        sortConditions[sortBy] = sortOrder;
+    }
     const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
     const result = yield student_model_1.Student.find(whereConditions)
         .populate('academicSemester')
@@ -115,21 +120,38 @@ const updateStudent = (id, payload) => __awaiter(void 0, void 0, void 0, functio
     const result = yield student_model_1.Student.findOneAndUpdate({ id }, updatedStudentData, {
         new: true,
     })
-        .populate('academicSemester')
+        .populate('academicFaculty')
         .populate('academicDepartment')
-        .populate('academicFaculty');
+        .populate('academicSemester');
     if (result) {
         yield redis_1.RedisClient.publish(student_constant_1.EVENT_STUDENT_UPDATED, JSON.stringify(result));
     }
     return result;
 });
 const deleteStudent = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield student_model_1.Student.findByIdAndDelete(id)
-        .populate('academicSemester')
-        .populate('academicDepartment')
-        .populate('academicFaculty')
-        .lean();
-    return result;
+    // check if the student is exist
+    const isExist = yield student_model_1.Student.findOne({ id });
+    if (!isExist) {
+        throw new ApiError_1.default(404, 'Student not found !');
+    }
+    const session = yield mongoose_1.default.startSession();
+    try {
+        session.startTransaction();
+        //delete student first
+        const student = yield student_model_1.Student.findOneAndDelete({ id }, { session });
+        if (!student) {
+            throw new ApiError_1.default(404, 'Failed to delete student');
+        }
+        //delete user
+        yield user_model_1.User.deleteOne({ id });
+        session.commitTransaction();
+        session.endSession();
+        return student;
+    }
+    catch (error) {
+        session.abortTransaction();
+        throw error;
+    }
 });
 exports.StudentService = {
     getAllStudents,

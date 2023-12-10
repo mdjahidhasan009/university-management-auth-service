@@ -10,7 +10,9 @@ const ApiError_1 = __importDefault(require("../../errors/ApiError"));
 const zod_1 = require("zod");
 const handleZodError_1 = __importDefault(require("../../errors/handleZodError"));
 const handleCastError_1 = __importDefault(require("../../errors/handleCastError"));
-const globalErrorHandler = (error, req, res, next) => {
+const globalErrorHandler = (error, req, res
+// next: NextFunction
+) => {
     // eslint-disable-next-line no-unused-expressions
     config_1.default.env === 'development'
         ? console.info('globalErrorHandler', error)
@@ -67,6 +69,6 @@ const globalErrorHandler = (error, req, res, next) => {
         errorMessages,
         stack: config_1.default.env !== 'production' ? error === null || error === void 0 ? void 0 : error.stack : undefined,
     });
-    next();
+    // next();
 };
 exports.default = globalErrorHandler;

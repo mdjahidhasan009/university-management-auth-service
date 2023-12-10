@@ -2,12 +2,14 @@ import { z } from 'zod';
 
 const updateFacultyZodSchema = z.object({
   body: z.object({
-    name: z.object({
-      firstName: z.string().optional(),
-      lastName: z.string().optional(),
-      middleName: z.string().optional(),
-    }),
-    dateOfBirth: z.string().optional().optional(),
+    name: z
+      .object({
+        firstName: z.string().optional(),
+        lastName: z.string().optional(),
+        middleName: z.string().optional(),
+      })
+      .optional(),
+    dateOfBirth: z.string().optional(),
     gender: z.string().optional(),
     bloodGroup: z.string().optional(),
     email: z.string().email().optional(),

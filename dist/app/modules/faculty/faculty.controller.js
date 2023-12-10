@@ -20,6 +20,16 @@ const pick_1 = __importDefault(require("../../../shared/pick"));
 const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const faculty_constant_1 = require("./faculty.constant");
 const faculty_service_1 = require("./faculty.service");
+const getSingleFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const result = yield faculty_service_1.FacultyService.getSingleFaculty(id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'faculty retrieved successfully !',
+        data: result,
+    });
+}));
 const getAllFaculties = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filters = (0, pick_1.default)(req.query, faculty_constant_1.facultyFilterableFields);
     const paginationOptions = (0, pick_1.default)(req.query, pagination_1.paginationFields);
@@ -30,16 +40,6 @@ const getAllFaculties = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
         message: 'faculties retrieved successfully !',
         meta: result.meta,
         data: result.data,
-    });
-}));
-const getSingleFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.id;
-    const result = yield faculty_service_1.FacultyService.getSingleFaculty(id);
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: 'faculty retrieved successfully !',
-        data: result,
     });
 }));
 const updateFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

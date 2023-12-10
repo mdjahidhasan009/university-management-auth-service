@@ -55,7 +55,8 @@ const deleteAccessToken = (userId) => __awaiter(void 0, void 0, void 0, function
 const disconnect = () => __awaiter(void 0, void 0, void 0, function* () {
     yield redisClient.quit();
     yield redisPubClient.quit();
-    yield redisSubClient.disconnect();
+    // await redisSubClient.disconnect();
+    yield redisSubClient.quit();
 });
 exports.RedisClient = {
     connect,

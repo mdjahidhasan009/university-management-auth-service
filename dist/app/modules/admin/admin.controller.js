@@ -20,6 +20,16 @@ const pick_1 = __importDefault(require("../../../shared/pick"));
 const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const admin_constant_1 = require("./admin.constant");
 const admin_service_1 = require("./admin.service");
+const getSingleAdmin = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const result = yield admin_service_1.AdminService.getSingleAdmin(id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Admin retrieved successfully !',
+        data: result,
+    });
+}));
 const getAllAdmins = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filters = (0, pick_1.default)(req.query, admin_constant_1.adminFilterableFields);
     const paginationOptions = (0, pick_1.default)(req.query, pagination_1.paginationFields);
@@ -30,16 +40,6 @@ const getAllAdmins = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
         message: 'Admins retrieved successfully !',
         meta: result.meta,
         data: result.data,
-    });
-}));
-const getSingleAdmin = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.id;
-    const result = yield admin_service_1.AdminService.getSingleAdmin(id);
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: 'Admin retrieved successfully !',
-        data: result,
     });
 }));
 const updateAdmin = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

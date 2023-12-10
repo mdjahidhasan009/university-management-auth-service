@@ -41,6 +41,16 @@ const createDepartment = (0, catchAsync_1.default)((req, res) => __awaiter(void 
         data: result,
     });
 }));
+const getSingleDepartment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const result = yield academicDepartment_service_1.AcademicDepartmentService.getSingleDepartment(id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Academic department fetched successfully',
+        data: result,
+    });
+}));
 const getAllDepartments = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filters = (0, pick_1.default)(req.query, academicDepartment_constants_1.academicDepartmentFilterableFields);
     const paginationOptions = (0, pick_1.default)(req.query, pagination_1.paginationFields);
@@ -51,16 +61,6 @@ const getAllDepartments = (0, catchAsync_1.default)((req, res) => __awaiter(void
         message: 'Academic departments fetched successfully',
         meta: result.meta,
         data: result.data,
-    });
-}));
-const getSingleDepartment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const result = yield academicDepartment_service_1.AcademicDepartmentService.getSingleDepartment(id);
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: 'Academic Department fetched successfully',
-        data: result,
     });
 }));
 const updateDepartment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

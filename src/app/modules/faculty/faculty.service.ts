@@ -16,6 +16,14 @@ import { IFaculty, IFacultyFilters } from './faculty.interface';
 import { Faculty } from './faculty.model';
 import { RedisClient } from '../../../shared/redis';
 
+const getSingleFaculty = async (id: string): Promise<IFaculty | null> => {
+  const result = await Faculty.findOne({ id })
+    .populate('academicDepartment')
+    .populate('academicFaculty');
+
+  return result;
+};
+
 const getAllFaculties = async (
   filters: IFacultyFilters,
   paginationOptions: IPaginationOptions
@@ -69,14 +77,6 @@ const getAllFaculties = async (
     },
     data: result,
   };
-};
-
-const getSingleFaculty = async (id: string): Promise<IFaculty | null> => {
-  const result = await Faculty.findOne({ id })
-    .populate('academicDepartment')
-    .populate('academicFaculty');
-
-  return result;
 };
 
 const updateFaculty = async (

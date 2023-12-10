@@ -46,6 +46,27 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         needsPasswordChange,
     };
 });
+const refreshToken = (refreshToken) => __awaiter(void 0, void 0, void 0, function* () {
+    let verifyRefreshToken = null;
+    try {
+        verifyRefreshToken = jwtHelpers_1.jwtHelpers.verifyToken(refreshToken, config_1.default.jwt.refresh_secret);
+        ////TODO: have to refactor
+        if (!verifyRefreshToken)
+            throw new ApiError_1.default(403, 'Invalid Refresh Token');
+    }
+    catch (e) {
+        throw new ApiError_1.default(403, 'Invalid Refresh Token');
+    }
+    const { userId } = verifyRefreshToken;
+    const isUserExist = yield user_model_1.User.isUserExists(userId);
+    if (!isUserExist)
+        throw new ApiError_1.default(404, 'User does not exist'); //User was deleted by admin for any reason after token was issued
+    const { id, role } = isUserExist;
+    const newAccessToken = jwtHelpers_1.jwtHelpers.createToken({ userId: id, role }, config_1.default.jwt.secret, config_1.default.jwt.expires_in);
+    return {
+        accessToken: newAccessToken,
+    };
+});
 const changePassword = (user, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const { oldPassword, newPassword } = payload;
     const isUserExist = yield user_model_1.User.isUserExists(user === null || user === void 0 ? void 0 : user.userId);
@@ -112,27 +133,6 @@ const changePassword = async(user: JwtPayload | null, payload: IChangePassword):
     await isUserExist.save();
 }
 */
-const refreshToken = (refreshToken) => __awaiter(void 0, void 0, void 0, function* () {
-    let verifyRefreshToken = null;
-    try {
-        verifyRefreshToken = jwtHelpers_1.jwtHelpers.verifyToken(refreshToken, config_1.default.jwt.refresh_secret);
-        ////TODO: have to refactor
-        if (!verifyRefreshToken)
-            throw new ApiError_1.default(403, 'Invalid Refresh Token');
-    }
-    catch (e) {
-        throw new ApiError_1.default(403, 'Invalid Refresh Token');
-    }
-    const { userId } = verifyRefreshToken;
-    const isUserExist = yield user_model_1.User.isUserExists(userId);
-    if (!isUserExist)
-        throw new ApiError_1.default(404, 'User does not exist'); //User was deleted by admin for any reason after token was issued
-    const { id, role } = isUserExist;
-    const newAccessToken = jwtHelpers_1.jwtHelpers.createToken({ userId: id, role }, config_1.default.jwt.secret, config_1.default.jwt.expires_in);
-    return {
-        accessToken: newAccessToken,
-    };
-});
 const resetPassword = (payload, token) => __awaiter(void 0, void 0, void 0, function* () {
     const { id, newPassword } = payload;
     const user = yield user_model_1.User.findOne({ id }, { id: 1 });

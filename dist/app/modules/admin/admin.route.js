@@ -11,9 +11,7 @@ const admin_validation_1 = require("./admin.validation");
 const auth_1 = __importDefault(require("../../middlewares/auth"));
 const users_1 = require("../../../enums/users");
 const router = express_1.default.Router();
-router.get('/:id', 
-// eslint-disable-next-line no-undef
-(0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), admin_controller_1.AdminController.getSingleAdmin);
+router.get('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), admin_controller_1.AdminController.getSingleAdmin);
 router.get('/', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), admin_controller_1.AdminController.getAllAdmins);
 router.patch('/:id', (0, validateRequest_1.default)(admin_validation_1.AdminValidation.updateAdmin), (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), admin_controller_1.AdminController.updateAdmin);
 router.delete('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN), admin_controller_1.AdminController.deleteAdmin);

@@ -35,9 +35,16 @@ const createSemester = (payload) => __awaiter(void 0, void 0, void 0, function* 
     }
     return yield acemedicSemester_model_1.AcademicSemester.create(payload);
 });
+const getSingleSemester = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield acemedicSemester_model_1.AcademicSemester.findById(id);
+    return result;
+});
 const getAllSemesters = (filters, paginationOptions) => __awaiter(void 0, void 0, void 0, function* () {
-    const { searchTerm } = filters, filteredData = __rest(filters, ["searchTerm"]);
+    // Extract searchTerm to implement search query
+    const { searchTerm } = filters, filtersData = __rest(filters, ["searchTerm"]);
+    const { page, limit, skip, sortBy, sortOrder } = paginationHelpers_1.paginationHelpers.calculatePagination(paginationOptions);
     const andConditions = [];
+    // Search needs $or for searching in specified fields
     if (searchTerm) {
         andConditions.push({
             $or: academicSemester_constant_1.academicSemesterSearchableFields.map(field => ({
@@ -48,30 +55,21 @@ const getAllSemesters = (filters, paginationOptions) => __awaiter(void 0, void 0
             })),
         });
     }
-    // const addConditions = [
-    //   {
-    //       $or: [
-    //           { title: { $regex: searchTerm, $options: 'i' } },
-    //           { code: { $regex: searchTerm, $options: 'i' } },
-    //           { year: { $regex: searchTerm, $options: 'i' } },
-    //       ],
-    //   }
-    // ];
-    if (Object.keys(filteredData).length) {
+    if (Object.keys(filtersData).length) {
         andConditions.push({
-            $and: Object.entries(filteredData).map(([field, value]) => ({
+            $and: Object.entries(filtersData).map(([field, value]) => ({
                 [field]: value,
             })),
         });
     }
-    const { page, limit, skip, sortBy, sortOrder } = paginationHelpers_1.paginationHelpers.calculatePagination(paginationOptions);
-    const sortCondition = {}; ////NOTE:
+    // Dynamic  Sort needs  field to  do sorting
+    const sortConditions = {};
     if (sortBy && sortOrder) {
-        sortCondition[sortBy] = sortOrder;
+        sortConditions[sortBy] = sortOrder;
     }
-    const whereCondition = andConditions.length > 0 ? { $and: andConditions } : {};
-    const result = yield acemedicSemester_model_1.AcademicSemester.find(whereCondition)
-        .sort(sortCondition)
+    const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
+    const result = yield acemedicSemester_model_1.AcademicSemester.find(whereConditions)
+        .sort(sortConditions)
         .skip(skip)
         .limit(limit);
     const total = yield acemedicSemester_model_1.AcademicSemester.countDocuments();
@@ -83,10 +81,6 @@ const getAllSemesters = (filters, paginationOptions) => __awaiter(void 0, void 0
         },
         data: result,
     };
-});
-const getSingleSemester = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield acemedicSemester_model_1.AcademicSemester.findById(id);
-    return result;
 });
 const updateSemester = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     if ((payload === null || payload === void 0 ? void 0 : payload.title) &&

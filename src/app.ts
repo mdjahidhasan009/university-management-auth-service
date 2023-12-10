@@ -32,8 +32,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // app.use('/api/v1/users/', UserRoutes);
-// app.use('/api/v1/academic-semester/', SemesterRoutes);
+// app.use('/api/v1/academic-semester/', AcademicSemesterRoutes);
 app.use('/api/v1', router);
+
+app.get('/', (req, res) => {
+  res.send('Server running successfully');
+});
 
 // app.get('/', async(req, res, next) => {
 //   // throw new ApiError(400,'error') // will be picked by if(err instanceof Error) {
@@ -56,7 +60,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
         message: 'API not found',
       },
     ],
-    data: null,
+    // data: null,
   });
   next();
 });

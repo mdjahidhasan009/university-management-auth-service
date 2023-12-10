@@ -29,8 +29,11 @@ app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // app.use('/api/v1/users/', UserRoutes);
-// app.use('/api/v1/academic-semester/', SemesterRoutes);
+// app.use('/api/v1/academic-semester/', AcademicSemesterRoutes);
 app.use('/api/v1', routes_1.default);
+app.get('/', (req, res) => {
+    res.send('Server running successfully');
+});
 // app.get('/', async(req, res, next) => {
 //   // throw new ApiError(400,'error') // will be picked by if(err instanceof Error) {
 //   //throw new Error('dd')
@@ -50,7 +53,7 @@ app.use((req, res, next) => {
                 message: 'API not found',
             },
         ],
-        data: null,
+        // data: null,
     });
     next();
 });

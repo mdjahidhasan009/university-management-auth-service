@@ -25,6 +25,14 @@ const academicDepartment_constants_1 = require("./academicDepartment.constants")
 const academicDepartment_model_1 = require("./academicDepartment.model");
 const paginationHelpers_1 = require("../../../helpers/paginationHelpers");
 const academicFaculty_model_1 = require("../academicFaculty/academicFaculty.model");
+const createDepartment = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = (yield academicDepartment_model_1.AcademicDepartment.create(payload)).populate('academicFaculty');
+    return result;
+});
+const getSingleDepartment = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield academicDepartment_model_1.AcademicDepartment.findById(id).populate('academicFaculty');
+    return result;
+});
 const getAllDepartments = (filters, paginationOptions) => __awaiter(void 0, void 0, void 0, function* () {
     const { limit, page, skip, sortBy, sortOrder } = paginationHelpers_1.paginationHelpers.calculatePagination(paginationOptions);
     // Extract searchTerm to implement search query
@@ -70,14 +78,6 @@ const getAllDepartments = (filters, paginationOptions) => __awaiter(void 0, void
         },
         data: result,
     };
-});
-const createDepartment = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = (yield academicDepartment_model_1.AcademicDepartment.create(payload)).populate('academicFaculty');
-    return result;
-});
-const getSingleDepartment = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield academicDepartment_model_1.AcademicDepartment.findById(id).populate('academicFaculty');
-    return result;
 });
 const updateDepartment = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield academicDepartment_model_1.AcademicDepartment.findOneAndUpdate({ _id: id }, payload, {

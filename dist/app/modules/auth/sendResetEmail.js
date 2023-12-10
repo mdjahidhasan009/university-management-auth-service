@@ -20,7 +20,7 @@ function sendEmail(to, html) {
         const transporter = nodemailer_1.default.createTransport({
             host: 'smtp.gmail.com',
             port: 587,
-            secure: true,
+            secure: false,
             auth: {
                 user: config_1.default.email,
                 pass: config_1.default.appPass,

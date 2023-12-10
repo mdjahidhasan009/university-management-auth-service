@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateAdminId = exports.findLastAdminId = exports.generateFacultyId = exports.generateStudentId = exports.findLastFacultyId = exports.findLastStudentId = void 0;
+exports.generateAdminId = exports.findLastAdminId = exports.generateFacultyId = exports.findLastFacultyId = exports.generateStudentId = exports.findLastStudentId = void 0;
 const user_model_1 = require("./user.model");
 const findLastStudentId = () => __awaiter(void 0, void 0, void 0, function* () {
     const lastStudent = yield user_model_1.User.findOne({
@@ -20,6 +20,17 @@ const findLastStudentId = () => __awaiter(void 0, void 0, void 0, function* () {
     return (lastStudent === null || lastStudent === void 0 ? void 0 : lastStudent.id) ? lastStudent.id.substring(4) : undefined;
 });
 exports.findLastStudentId = findLastStudentId;
+const generateStudentId = (academicSemester) => __awaiter(void 0, void 0, void 0, function* () {
+    const currentId = (yield (0, exports.findLastStudentId)()) || (0).toString().padStart(5, '0');
+    let incrementedId = (parseInt(currentId) + 1).toString().padStart(5, '0');
+    ////TODO: warning
+    // incrementedId = `${academicSemester.year.toString().substring(2)}${
+    //   academicSemester.code
+    // }${incrementedId}`;
+    incrementedId = `${academicSemester.year}${academicSemester.code}${incrementedId}`;
+    return incrementedId;
+});
+exports.generateStudentId = generateStudentId;
 const findLastFacultyId = () => __awaiter(void 0, void 0, void 0, function* () {
     const lastUser = yield user_model_1.User.findOne({
         role: 'faculty',
@@ -29,13 +40,6 @@ const findLastFacultyId = () => __awaiter(void 0, void 0, void 0, function* () {
     return (lastUser === null || lastUser === void 0 ? void 0 : lastUser.id) ? lastUser.id.substring(2) : undefined;
 });
 exports.findLastFacultyId = findLastFacultyId;
-const generateStudentId = (academicSemester) => __awaiter(void 0, void 0, void 0, function* () {
-    const currentId = (yield (0, exports.findLastStudentId)()) || (0).toString().padStart(5, '0');
-    let incrementedId = (parseInt(currentId) + 1).toString().padStart(5, '0');
-    incrementedId = `${academicSemester.year.toString().substring(2)}${academicSemester.code}${incrementedId}`;
-    return incrementedId;
-});
-exports.generateStudentId = generateStudentId;
 //F-00001
 const generateFacultyId = () => __awaiter(void 0, void 0, void 0, function* () {
     const currentId = (yield (0, exports.findLastFacultyId)()) || (0).toString().padStart(5, '0');

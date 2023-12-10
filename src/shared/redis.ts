@@ -56,7 +56,8 @@ const deleteAccessToken = async (userId: string): Promise<void> => {
 const disconnect = async (): Promise<void> => {
   await redisClient.quit();
   await redisPubClient.quit();
-  await redisSubClient.disconnect();
+  // await redisSubClient.disconnect();
+  await redisSubClient.quit();
 };
 
 export const RedisClient = {

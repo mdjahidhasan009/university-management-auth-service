@@ -12,6 +12,25 @@ import { AcademicDepartment } from './academicDepartment.model';
 import { paginationHelpers } from '../../../helpers/paginationHelpers';
 import { AcademicFaculty } from '../academicFaculty/academicFaculty.model';
 
+const createDepartment = async (
+  payload: IAcademicDepartment
+): Promise<IAcademicDepartment | null> => {
+  const result = (await AcademicDepartment.create(payload)).populate(
+    'academicFaculty'
+  );
+  return result;
+};
+
+const getSingleDepartment = async (
+  id: string
+): Promise<IAcademicDepartment | null> => {
+  const result = await AcademicDepartment.findById(id).populate(
+    'academicFaculty'
+  );
+
+  return result;
+};
+
 const getAllDepartments = async (
   filters: IAcademicDepartmentFilters,
   paginationOptions: IPaginationOptions
@@ -72,24 +91,6 @@ const getAllDepartments = async (
     },
     data: result,
   };
-};
-
-const createDepartment = async (
-  payload: IAcademicDepartment
-): Promise<IAcademicDepartment | null> => {
-  const result = (await AcademicDepartment.create(payload)).populate(
-    'academicFaculty'
-  );
-  return result;
-};
-
-const getSingleDepartment = async (
-  id: string
-): Promise<IAcademicDepartment | null> => {
-  const result = await AcademicDepartment.findById(id).populate(
-    'academicFaculty'
-  );
-  return result;
 };
 
 const updateDepartment = async (

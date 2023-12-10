@@ -41,6 +41,16 @@ const createFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
         data: result,
     });
 }));
+const getSingleFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const result = yield academicFaculty_service_1.AcademicFacultyService.getSingleFaculty(id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Academic faculty fetched successfully',
+        data: result,
+    });
+}));
 const getAllFaculties = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filters = (0, pick_1.default)(req.query, academicFaculty_constants_1.academicFacultyFilterableFields);
     const paginationOptions = (0, pick_1.default)(req.query, pagination_1.paginationFields);
@@ -51,16 +61,6 @@ const getAllFaculties = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
         message: 'Academic Faculties retrieved successfully',
         meta: result.meta,
         data: result.data,
-    });
-}));
-const getSingleFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const result = yield academicFaculty_service_1.AcademicFacultyService.getSingleFaculty(id);
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: 'Academic Faculty fetched successfully',
-        data: result,
     });
 }));
 const updateFaculty = (0, catchAsync_1.default)((0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

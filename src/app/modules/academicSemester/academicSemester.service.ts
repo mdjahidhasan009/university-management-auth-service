@@ -24,13 +24,24 @@ const createSemester = async (
   return await AcademicSemester.create(payload);
 };
 
+const getSingleSemester = async (
+  id: string
+): Promise<IAcademicSemester | null> => {
+  const result = await AcademicSemester.findById(id);
+  return result;
+};
+
 const getAllSemesters = async (
   filters: IAcademicSemesterFilters,
   paginationOptions: IPaginationOptions
 ): Promise<IGenericResponse<IAcademicSemester[]>> => {
-  const { searchTerm, ...filteredData } = filters;
-  const andConditions = [];
+  // Extract searchTerm to implement search query
+  const { searchTerm, ...filtersData } = filters;
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelpers.calculatePagination(paginationOptions);
 
+  const andConditions = [];
+  // Search needs $or for searching in specified fields
   if (searchTerm) {
     andConditions.push({
       $or: academicSemesterSearchableFields.map(field => ({
@@ -42,37 +53,24 @@ const getAllSemesters = async (
     });
   }
 
-  // const addConditions = [
-  //   {
-  //       $or: [
-  //           { title: { $regex: searchTerm, $options: 'i' } },
-  //           { code: { $regex: searchTerm, $options: 'i' } },
-  //           { year: { $regex: searchTerm, $options: 'i' } },
-  //       ],
-  //   }
-  // ];
-
-  if (Object.keys(filteredData).length) {
+  if (Object.keys(filtersData).length) {
     andConditions.push({
-      $and: Object.entries(filteredData).map(([field, value]) => ({
+      $and: Object.entries(filtersData).map(([field, value]) => ({
         [field]: value,
       })),
     });
   }
 
-  const { page, limit, skip, sortBy, sortOrder } =
-    paginationHelpers.calculatePagination(paginationOptions);
-
-  const sortCondition: { [key: string]: SortOrder } = {}; ////NOTE:
+  // Dynamic  Sort needs  field to  do sorting
+  const sortConditions: { [key: string]: SortOrder } = {};
   if (sortBy && sortOrder) {
-    sortCondition[sortBy] = sortOrder;
+    sortConditions[sortBy] = sortOrder;
   }
-
-  const whereCondition =
+  const whereConditions =
     andConditions.length > 0 ? { $and: andConditions } : {};
 
-  const result = await AcademicSemester.find(whereCondition)
-    .sort(sortCondition)
+  const result = await AcademicSemester.find(whereConditions)
+    .sort(sortConditions)
     .skip(skip)
     .limit(limit);
 
@@ -86,13 +84,6 @@ const getAllSemesters = async (
     },
     data: result,
   };
-};
-
-const getSingleSemester = async (
-  id: string
-): Promise<IAcademicSemester | null> => {
-  const result = await AcademicSemester.findById(id);
-  return result;
 };
 
 const updateSemester = async (

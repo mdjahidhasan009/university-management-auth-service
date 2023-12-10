@@ -13,14 +13,15 @@ const auth_1 = __importDefault(require("../../middlewares/auth"));
 const router = express_1.default.Router();
 router.post('/create-faculty', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), (0, validateRequest_1.default)(academicFaculty_validations_1.AcademicFacultyValidation.createFacultyZodSchema), academicFaculty_controller_1.AcademicFacultyController.createFaculty);
 router.get('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN, users_1.ENUM_USER_ROLE.FACULTY, users_1.ENUM_USER_ROLE.STUDENT), academicFaculty_controller_1.AcademicFacultyController.getSingleFaculty);
-router.patch('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN, users_1.ENUM_USER_ROLE.FACULTY), (0, validateRequest_1.default)(academicFaculty_validations_1.AcademicFacultyValidation.updatefacultyZodSchema), academicFaculty_controller_1.AcademicFacultyController.updateFaculty);
-router.delete('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), academicFaculty_controller_1.AcademicFacultyController.deleteFaculty);
 router.get('/', 
 // auth(
 //   ENUM_USER_ROLE.SUPER_ADMIN,
 //   ENUM_USER_ROLE.ADMIN,
-//   ENUM_USER_ROLE.FACULTY,
-//   ENUM_USER_ROLE.STUDENT
+//   ENUM_USER_ROLE.FACULTY
 // ),
 academicFaculty_controller_1.AcademicFacultyController.getAllFaculties);
+router.patch('/:id', (0, validateRequest_1.default)(academicFaculty_validations_1.AcademicFacultyValidation.updatefacultyZodSchema), (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN, users_1.ENUM_USER_ROLE.FACULTY), 
+// validateRequest(AcademicFacultyValidation.updatefacultyZodSchema),
+academicFaculty_controller_1.AcademicFacultyController.updateFaculty);
+router.delete('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.SUPER_ADMIN, users_1.ENUM_USER_ROLE.ADMIN), academicFaculty_controller_1.AcademicFacultyController.deleteFaculty);
 exports.AcademicFacultyRoutes = router;

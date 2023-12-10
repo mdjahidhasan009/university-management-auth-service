@@ -9,6 +9,18 @@ import {
 } from './student.constant';
 import { StudentService } from './student.service';
 
+const getSingleStudent = catchAsync(async (req: Request, res: Response) => {
+  const studentId = req.params.id;
+
+  const result = await StudentService.getSingleStudent(studentId);
+  sendResponse<IStudent>(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Student fetched successfully',
+    data: result,
+  });
+});
+
 const getAllStudents = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, studentFilterableFields);
   const paginationOptions = pick(req.query, studentSearchableFields);
@@ -24,18 +36,6 @@ const getAllStudents = catchAsync(async (req: Request, res: Response) => {
     message: 'Students fetched successfully',
     data: result.data,
     meta: result.meta,
-  });
-});
-
-const getSingleStudent = catchAsync(async (req: Request, res: Response) => {
-  const studentId = req.params.id;
-
-  const result = await StudentService.getSingleStudent(studentId);
-  sendResponse<IStudent>(res, {
-    statusCode: 200,
-    success: true,
-    message: 'Student fetched successfully',
-    data: result,
   });
 });
 

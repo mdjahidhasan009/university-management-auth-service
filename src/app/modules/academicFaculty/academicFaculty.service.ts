@@ -18,6 +18,13 @@ const createFaculty = async (
   return result;
 };
 
+const getSingleFaculty = async (
+  id: string
+): Promise<IAcademicFaculty | null> => {
+  const result = await AcademicFaculty.findById(id);
+  return result;
+};
+
 const getAllFaculties = async (
   filters: IAcademicFacultyFilters,
   paginationOptions: IPaginationOptions
@@ -70,13 +77,6 @@ const getAllFaculties = async (
     },
     data: result,
   };
-};
-
-const getSingleFaculty = async (
-  id: string
-): Promise<IAcademicFaculty | null> => {
-  const result = await AcademicFaculty.findById(id);
-  return result;
 };
 
 const updateFaculty = async (

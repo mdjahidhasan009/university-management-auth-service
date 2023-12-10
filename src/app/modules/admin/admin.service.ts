@@ -10,6 +10,11 @@ import { adminSearchableFields } from './admin.constant';
 import { IAdmin, IAdminFilters } from './admin.interface';
 import { Admin } from './admin.model';
 
+const getSingleAdmin = async (id: string): Promise<IAdmin | null> => {
+  const result = await Admin.findOne({ id }).populate('ManagementDepartment');
+  return result;
+};
+
 const getAllAdmins = async (
   filters: IAdminFilters,
   paginationOptions: IPaginationOptions
@@ -63,11 +68,6 @@ const getAllAdmins = async (
     },
     data: result,
   };
-};
-
-const getSingleAdmin = async (id: string): Promise<IAdmin | null> => {
-  const result = await Admin.findOne({ id }).populate('ManagementDepartment');
-  return result;
 };
 
 const updateAdmin = async (

@@ -108,11 +108,9 @@ UserSchema.statics.isPasswordMatched = function (givenPassword, savedPassword) {
 //   user.password = '';
 //   next();
 // });
-// UserSchema.methods.changedPasswordAfterJwtIssued = function (
-//   jwtTimestamp: number
-// ) {
-//   console.log({ jwtTimestamp }, 'hi');
-// };
+UserSchema.methods.changedPasswordAfterJwtIssued = function (jwtTimestamp) {
+    console.info({ jwtTimestamp }, 'hi');
+};
 UserSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
         // hashing user password
@@ -126,3 +124,17 @@ UserSchema.pre('save', function (next) {
     });
 });
 exports.User = (0, mongoose_1.model)('User', UserSchema);
+// UserSchema.methods.isUserExist = async function (
+//   id: string
+// ): Promise<Partial<IUser> | null> {
+//   return await User.findOne(
+//     { id },
+//     { id: 1, password: 1, needsPasswordChange: 1 }
+//   );
+// };
+// UserSchema.methods.isPasswordMatched = async function (
+//   givenPassword: string,
+//   savedPassword: string
+// ): Promise<boolean> {
+//   return await bcrypt.compare(givenPassword, savedPassword);
+// };

@@ -1,4 +1,4 @@
-import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
+import { ErrorRequestHandler, Request, Response } from 'express';
 import config from '../../config';
 import { IGenericErrorMessage } from '../../interfaces/error';
 import handleValidationError from '../../errors/handleValidationError';
@@ -11,8 +11,8 @@ import handleCastError from '../../errors/handleCastError';
 const globalErrorHandler: ErrorRequestHandler = (
   error,
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
+  // next: NextFunction
 ) => {
   // eslint-disable-next-line no-unused-expressions
   config.env === 'development'
@@ -70,7 +70,7 @@ const globalErrorHandler: ErrorRequestHandler = (
     stack: config.env !== 'production' ? error?.stack : undefined,
   });
 
-  next();
+  // next();
 };
 
 export default globalErrorHandler;

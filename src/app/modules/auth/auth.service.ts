@@ -57,6 +57,37 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   };
 };
 
+const refreshToken = async (
+  refreshToken: string
+): Promise<IRefreshTokenResponse> => {
+  let verifyRefreshToken = null;
+  try {
+    verifyRefreshToken = jwtHelpers.verifyToken(
+      refreshToken,
+      config.jwt.refresh_secret as Secret
+    );
+    ////TODO: have to refactor
+    if (!verifyRefreshToken) throw new ApiError(403, 'Invalid Refresh Token');
+  } catch (e) {
+    throw new ApiError(403, 'Invalid Refresh Token');
+  }
+
+  const { userId } = verifyRefreshToken;
+  const isUserExist = await User.isUserExists(userId);
+  if (!isUserExist) throw new ApiError(404, 'User does not exist'); //User was deleted by admin for any reason after token was issued
+  const { id, role } = isUserExist;
+
+  const newAccessToken = jwtHelpers.createToken(
+    { userId: id, role },
+    config.jwt.secret as Secret,
+    config.jwt.expires_in as string
+  );
+
+  return {
+    accessToken: newAccessToken,
+  };
+};
+
 const changePassword = async (
   user: JwtPayload | null | undefined,
   payload: IChangePassword
@@ -147,37 +178,6 @@ const changePassword = async(user: JwtPayload | null, payload: IChangePassword):
     await isUserExist.save();
 }
 */
-
-const refreshToken = async (
-  refreshToken: string
-): Promise<IRefreshTokenResponse> => {
-  let verifyRefreshToken = null;
-  try {
-    verifyRefreshToken = jwtHelpers.verifyToken(
-      refreshToken,
-      config.jwt.refresh_secret as Secret
-    );
-    ////TODO: have to refactor
-    if (!verifyRefreshToken) throw new ApiError(403, 'Invalid Refresh Token');
-  } catch (e) {
-    throw new ApiError(403, 'Invalid Refresh Token');
-  }
-
-  const { userId } = verifyRefreshToken;
-  const isUserExist = await User.isUserExists(userId);
-  if (!isUserExist) throw new ApiError(404, 'User does not exist'); //User was deleted by admin for any reason after token was issued
-  const { id, role } = isUserExist;
-
-  const newAccessToken = jwtHelpers.createToken(
-    { userId: id, role },
-    config.jwt.secret as Secret,
-    config.jwt.expires_in as string
-  );
-
-  return {
-    accessToken: newAccessToken,
-  };
-};
 
 const resetPassword = async (
   payload: { id: string; newPassword: string },

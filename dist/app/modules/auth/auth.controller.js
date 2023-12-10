@@ -46,6 +46,21 @@ const loginUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void
         success: true,
     });
 }));
+const refreshToken = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { refreshToken } = req.cookies;
+    const result = yield auth_service_1.AuthService.refreshToken(refreshToken);
+    const cookieOptions = {
+        secure: config_1.default.env === 'production' ? true : false,
+        httpOnly: true,
+    };
+    res.cookie('refreshToken', refreshToken, cookieOptions);
+    (0, sendResponse_1.default)(res, {
+        statusCode: 200,
+        message: 'Refresh Token successful',
+        data: result,
+        success: true,
+    });
+}));
 const changePassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = req.user;
     const passwordData = __rest(req.body, []);
@@ -54,21 +69,6 @@ const changePassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
         statusCode: 200,
         success: true,
         message: 'Password changed successfully !',
-    });
-}));
-const refreshToken = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { refreshToken } = req.cookies;
-    const result = yield auth_service_1.AuthService.refreshToken(refreshToken);
-    // const cookieOptions = {
-    //   secure: config.env === 'production' ? true : false,
-    //   httpOnly: true,
-    // };
-    // res.cookie('refreshToken', refreshToken, cookieOptions);
-    (0, sendResponse_1.default)(res, {
-        statusCode: 200,
-        message: 'Refresh Token successful',
-        data: result,
-        success: true,
     });
 }));
 const forgotPass = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {

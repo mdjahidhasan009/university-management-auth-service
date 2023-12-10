@@ -28,6 +28,10 @@ const createFaculty = (payload) => __awaiter(void 0, void 0, void 0, function* (
     const result = yield academicFaculty_model_1.AcademicFaculty.create(payload);
     return result;
 });
+const getSingleFaculty = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield academicFaculty_model_1.AcademicFaculty.findById(id);
+    return result;
+});
 const getAllFaculties = (filters, paginationOptions) => __awaiter(void 0, void 0, void 0, function* () {
     const { searchTerm } = filters, filtersData = __rest(filters, ["searchTerm"]);
     const { page, limit, skip, sortBy, sortOrder } = paginationHelpers_1.paginationHelpers.calculatePagination(paginationOptions);
@@ -67,10 +71,6 @@ const getAllFaculties = (filters, paginationOptions) => __awaiter(void 0, void 0
         },
         data: result,
     };
-});
-const getSingleFaculty = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield academicFaculty_model_1.AcademicFaculty.findById(id);
-    return result;
 });
 const updateFaculty = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield academicFaculty_model_1.AcademicFaculty.findOneAndUpdate({ _id: id }, payload, {

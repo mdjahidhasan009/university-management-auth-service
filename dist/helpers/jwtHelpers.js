@@ -10,8 +10,8 @@ const createToken = (payload, secret, expireTime) => {
         expiresIn: expireTime,
     });
 };
-const createResetToken = (payload, secrect, expireTime) => {
-    return jsonwebtoken_1.default.sign(payload, secrect, {
+const createResetToken = (payload, secret, expireTime) => {
+    return jsonwebtoken_1.default.sign(payload, secret, {
         algorithm: 'HS256',
         expiresIn: expireTime,
     });

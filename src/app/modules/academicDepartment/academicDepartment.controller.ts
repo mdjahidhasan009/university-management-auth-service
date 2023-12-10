@@ -23,6 +23,18 @@ const createDepartment = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getSingleDepartment = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await AcademicDepartmentService.getSingleDepartment(id);
+
+  sendResponse<IAcademicDepartment>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Academic department fetched successfully',
+    data: result,
+  });
+});
+
 const getAllDepartments = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, academicDepartmentFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
@@ -38,18 +50,6 @@ const getAllDepartments = catchAsync(async (req: Request, res: Response) => {
     message: 'Academic departments fetched successfully',
     meta: result.meta,
     data: result.data,
-  });
-});
-
-const getSingleDepartment = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await AcademicDepartmentService.getSingleDepartment(id);
-
-  sendResponse<IAcademicDepartment>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Academic Department fetched successfully',
-    data: result,
   });
 });
 

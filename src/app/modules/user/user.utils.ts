@@ -51,7 +51,12 @@ export const generateFacultyId = async (): Promise<string> => {
 };
 
 export const findLastAdminId = async (): Promise<string | undefined> => {
-  const lastFaculty = await User.findOne({ role: 'admin' }, { id: 1, _id: 0 })
+  const lastFaculty = await User.findOne(
+    {
+      $or: [{ role: 'admin' }, { role: 'super_admin' }],
+    },
+    { id: 1, _id: 0 }
+  )
     .sort({
       createdAt: -1,
     })

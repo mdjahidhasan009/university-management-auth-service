@@ -49,7 +49,9 @@ const generateFacultyId = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.generateFacultyId = generateFacultyId;
 const findLastAdminId = () => __awaiter(void 0, void 0, void 0, function* () {
-    const lastFaculty = yield user_model_1.User.findOne({ role: 'admin' }, { id: 1, _id: 0 })
+    const lastFaculty = yield user_model_1.User.findOne({
+        $or: [{ role: 'admin' }, { role: 'super_admin' }],
+    }, { id: 1, _id: 0 })
         .sort({
         createdAt: -1,
     })
